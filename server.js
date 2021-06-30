@@ -18,8 +18,9 @@ dbcon.connect(function(err){
     else
         console.log("Connected Successfully");
 });
+var port = process.env.PORT ||8080;
 
-app.listen(8080,()=>{
+app.listen(port,()=>{
     console.log('server started at port 8080');
 })
 app.use(express.static('public'));
