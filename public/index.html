@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+    <!----------------------------- navbar --------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="./images/logo.png" alt="" width="150" height="34">
+          </a>
+          <a class="navbar-brand" href="/">MedCare</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</button>
+              <button type="button" class="btn btn-outline-success" style="margin-left: 25px;" data-bs-toggle="modal" data-bs-target="#signin">Log In</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+
+  
+  <!---------------------- Modal  for sing up---------------------------------->
+  <div class="modal fade" id="signup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form>
+        <div class="modal-body">
+            <table>
+            
+                <tr>
+                    <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name='password' required>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="mb-3">
+                    <label for="mobile_number" class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobile_number" name="mobile_number" required>
+                    </div>
+                </tr>
+                <tr>
+                  
+                      <label class="form-check-label" style="margin-right: 25px;">Type </label>
+                    
+                    </tr>
+                    <tr>
+                      <select class="form-select" id="select" aria-label="Default select example" required>
+                        <option selected>Open this select menu</option>
+                        <option value="Med Provider">Med Provider</option>
+                        <option value="Needy">Needy</option>
+                      </select>
+                </tr>
+              
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="sign_up">Sign Up</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!---------------------- Modal  for sing in---------------------------------->
+  <div class="modal fade" id="signin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Log In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form>
+        <div class="modal-body">
+            <table>
+            
+                <tr>
+                    <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="emailForLogin" aria-describedby="emailHelp" name="email" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordForLogin" name='password' required>
+                    </div>
+                </tr>
+                <tr>
+                  <div id="emailHelp" class="form-text" id='login_message' style="visibility:hidden">Thanks for log in</div>
+                  </div>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="log_in">Log In</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!------------------------slide show--------------------------->
+  <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./images/pic3.jpg" class="d-block w-100 h-100" alt="..." >
+      </div>
+      <div class="carousel-item">
+        <img src="./images/pic2.jpg" class="d-block w-100 h-100" alt="..." >
+      </div>
+      <div class="carousel-item">
+        <img src="./images/pic1.png" class="d-block w-100 h-100" alt="..." >
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-----------------------------our service ---------------------------->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 mt-4 m-auto">
+        <h3 class="m-auto" align="center">Our Services</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5 m-5 m-auto">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card mt-5 " style=" margin: auto;">
+            <img src="./images/christine-sandu-jwWtZrm67VI-unsplash.jpg" class="card-img-top" alt="user img">
+            <div class="card-body">
+              <h5 class="card-title">Provide Medicines</h5>
+              <p class="card-text">Donate the reusable medicines that are not in use at your home for the sake of people who need help.</p>
+              <!-- <a href="./provider-profile" class="btn btn-primary">Profile</a> -->
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3  ms-auto" >
+        <div class="card mt-5 " style=" margin: auto;">
+            <img src="images/christine-sandu-jwWtZrm67VI-unsplash.jpg" class="card-img-top" alt="medicine">
+            <div class="card-body">
+              <h5 class="card-title">Get Medicine</h5>
+              <p class="card-text">People who are in need of free medicine help, can Contact th medicine provider.</p>
+              <!-- <a href="/avail" class="btn btn-primary">Avail Medicine</a> -->
+            </div>
+          </div>
+      </div>
+      <div class="col-md-3 ms-auto ">
+      <div class="card mt-5 " style="margin: auto;">
+            <img src="./images/iconfinder_285645_user_icon_512px.png" class="card-img-top" alt="management">
+            <div class="card-body">
+              <h5 class="card-title">Join Us</h5>
+              <p class="card-text">Join us by sigup on our site and b part of human welfare by donating medicines</p>
+              <!-- <a href="/med-manager" class="btn btn-primary">Medicine Manager</a> -->
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<!---------------------developers details-------------- -->
+<div class="container">
+  <div class="row mt-5"> 
+    <div class="col-md-6">
+      <h3 class="m-auto" align="center">Developed By</h3>
+    </div>
+    <div class="col-md-6">
+      <h3 class="m-auto" align="center">Under The Guidance</h3>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 ">
+      <div class="card mb-3 m-5" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="images/myPic.jpeg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Nitish kumar</h5>
+              <p class="card-text"><b>Email:</b>nitishkb17@gmail.com<br><b>Contact:</b>7508764203<br><b>Address:</b>Bathinda,Punjab</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 ms-auto " >
+      <div class="card mb-3 m-5" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Name: Rajesh kumar bansal<br>
+                E-mail: bcebti@gmail.com<br>
+                Contact: 98722-46056<br>
+                 20 tears training and developing experience<br> Author of java book(Real Java)<br> Developer of www.RealJavaOnline.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

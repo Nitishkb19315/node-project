@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/script_for_med_finder.js"></script>
+    <title>Find Medicine</title>
+</head>
+<body ng-app="module" ng-controller="controller" ng-init="available_med()"> 
+    
+    <!----------------nav bar--------------------------->
+    
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <form class="container m-auto mt-5">
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-10">
+              <input list="city" class="form-control" id="inputEmail3" ng-model="city"  ng-init='cityfuntion()'>
+              <datalist  id="city">
+                <option value="{{obj.city}}" ng-repeat="obj in cities_array">
+              </datalist>
+              <!---<input type="text" class="form-control" id="inputEmail3" ng-model="city">--->
+
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Medicine</label>
+            <div class="col-sm-10">
+              <input list="medicine" class="form-control" id="inputEmail3" ng-model="medicine">
+              <datalist  id="medicine">
+                <option value="{{obj.medname}}" ng-repeat="obj in medicine_array| filter: city">
+              </datalist>
+              <!--<select class="form-control" ng-model="medicine" >
+                  <option ng-repeat="obj in medicine_array| filter: city" value="{{obj.medname}}">{{obj.medname}}</option>
+              </select>-->
+            </div>
+          </div>
+          <div class="row ">
+              <button type="button" class="btn btn-primary col-sm-2 m-auto mt-3" ng-click="search()">Search</button>
+          </div>
+        </form>
+
+
+        <!------------------------------------------------------------------>
+      <div class='container mt-4'>
+        <div class="row row-cols-1 row-cols-md-3 g-5">
+          <div class="col" ng-repeat="obj in founded_medicine">
+            <div class="card h-100">
+              <img src="uploads/{{obj.picname}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color: blue">{{obj.medname}}</h5>
+                <p class="card-text">
+                  Company: {{obj.company}}<br>
+                  Quantity: {{obj.quantity}}<br>
+                  Expiry Date: {{obj.expdate}}<br>
+                  Provider's Email: {{obj.email}}<br>
+                </p>
+                <input type="button" class="btn btn-outline-primary" value="Provider's Details" data-bs-toggle="modal" data-bs-target="#medicine_modal" ng-click="provider_details(obj.email)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!------------------------------------------------------------------------------------>
+
+      <div class="modal fade" id="medicine_modal" tabindex="-1" aria-labelledby="medicine_modal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style='word-wrap: break-word;'>
+            <div  style="width: 100%;">
+              <center>
+              <img class="m-auto" style="margin:auto; width:50%; height:50%;"  src="./uploads/{{provider_details_data[0].picname}}"></center>
+            </div>
+              <div style="text-transform: capitalize;" class="mt-4">
+                <h5><b>Name:  </b>{{provider_details_data[0].name}}</h5>
+                <h6><b>Email:   </b>{{provider_details_data[0].email}}</h6>
+                <h6><b>Contact:  </b>{{provider_details_data[0].contact}}</h6>
+                <p><b>Address:  </b>{{provider_details_data[0].fulladdress}},{{provider_details_data[0].city}},{{provider_details_data[0].state}}({{provider_details_data[0].pin}})</p>
+              </>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
