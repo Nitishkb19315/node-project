@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "public",
+    "port": 5000,
+      "host": "0.0.0.0",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

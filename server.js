@@ -6,10 +6,11 @@ const fileupload = require('express-fileupload');
 const { send } = require('process');
 
 var dbConfigObj={
-    host:"localhost",
-    user:"root", 
-    password:"",
-    database:"project"
+    host:"sql11.freesqldatabase.com",
+    user:"sql11422391", 
+    password:"9WVqXm8RPL",
+    database:"sql11422391",
+    port: 3306,
 }
 var dbcon= mysql.createConnection(dbConfigObj);
 dbcon.connect(function(err){
